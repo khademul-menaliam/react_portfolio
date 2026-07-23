@@ -1,0 +1,121 @@
+/* Custom styles matching Stitch design systems */
+body {
+  background-color: #0a0a0f; /* Deep obsidian base */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(56, 222, 187, 0.03), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(210, 187, 255, 0.03), transparent 25%);
+  background-attachment: fixed;
+  color: #e4e1e9;
+  min-height: max(884px, 100dvh);
+  margin: 0;
+}
+
+.glass-panel {
+  background: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(56, 222, 187, 0.15);
+  box-shadow: inset 0 0 8px rgba(56, 222, 187, 0.1);
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: 1px solid #38debb;
+  color: #38debb;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 15px rgba(56, 222, 187, 0.3);
+  background-color: rgba(56, 222, 187, 0.1);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #d2bbff;
+  color: #d2bbff;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 15px rgba(210, 187, 255, 0.3);
+  background-color: rgba(210, 187, 255, 0.1);
+}
+
+.tech-pill {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: #d2bbff;
+}
+
+.terminal-bg {
+  background-color: #050508;
+}
+
+.code-bg {
+  background-color: #11111b;
+}
+
+.glow-border-cyan:focus-within {
+  border-color: #38debb;
+  box-shadow: 0 0 8px rgba(56, 222, 187, 0.5);
+}
+
+.glow-border-purple:focus-within {
+  border-color: #d2bbff;
+  box-shadow: 0 0 8px rgba(210, 187, 255, 0.5);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.caret-blink {
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background-color: #38debb;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* Neon Borders for Pagination */
+.neon-border {
+  border: 1px solid rgba(56, 222, 187, 0.3);
+  transition: all 0.3s ease;
+}
+.neon-border:hover, .neon-border.active {
+  border-color: #38debb;
+  box-shadow: 0 0 8px rgba(56, 222, 187, 0.4), inset 0 0 4px rgba(56, 222, 187, 0.2);
+  background: rgba(56, 222, 187, 0.1);
+  color: #38debb;
+}
+
+/* Terminal Window Dots */
+.terminal-dots::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ff5f56;
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+  margin-right: 56px;
+}
+
+/* Window controls */
+.window-controls::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffb4ab;
+  box-shadow: 16px 0 0 #fadb5f, 32px 0 0 #38debb;
+  margin-right: 48px;
+}
