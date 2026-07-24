@@ -13,7 +13,7 @@ export const ProjectGrid: React.FC<ProjectGridProps> = ({
   setProjectsPage,
   onNavigate
 }) => {
-  const projectsPerPage = 3;
+  const projectsPerPage = 6;
   const totalPages = Math.ceil(PROJECTS_DATA.length / projectsPerPage);
   
   const currentProjects = PROJECTS_DATA.slice(

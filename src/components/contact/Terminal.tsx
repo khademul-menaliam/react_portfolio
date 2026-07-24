@@ -21,9 +21,9 @@ export const Terminal: React.FC<TerminalProps> = ({ visitorCount, onNavigate }) 
     if (cmd === 'help') {
       response = 'Available commands: help | about | skills | projects | clear | neofetch';
     } else if (cmd === 'about') {
-      response = 'Khademul - Backend Engineer. Building robust, high-performance distributed systems and APIs.';
+      response = 'Md. Khademul Islam - Laravel Backend Developer. Building robust, scalable backend systems, secure REST APIs, and databases with 1+ years experience.';
     } else if (cmd === 'skills') {
-      response = 'Languages: Go, Rust, Python, TypeScript, SQL | Techs: Node.js, Kafka, Redis, Docker, Kubernetes, AWS';
+      response = 'Languages & Frameworks: PHP, Laravel, C/C++, JavaScript, HTML/CSS, Tailwind CSS, Alpine.js | Database & Systems: MySQL, Database Design, Query Optimization, cPanel | QA & Networks: Manual Testing, SDLC/STLC, TCP/IP, VLAN, Cisco Packet Tracer, VS Code, Postman, Git';
     } else if (cmd === 'projects') {
       response = 'Displaying projects... Navigating to project directory.';
       setTimeout(() => {
@@ -34,7 +34,7 @@ export const Terminal: React.FC<TerminalProps> = ({ visitorCount, onNavigate }) 
       setTerminalInput('');
       return;
     } else if (cmd === 'neofetch') {
-      response = `OS: Obsidian-Linux v3.5\nSHELL: React-Term v19\nHOST: khademul.dev\nPROJECTS: 6 active\nVISITOR: ${visitorCount}`;
+      response = `OS: Obsidian-Linux v3.5\nSHELL: React-Term v19\nHOST: khademul.dev\nPROJECTS: 10 active\nVISITOR: ${visitorCount}`;
     } else {
       response = `Command not found: "${cmd}". Type "help" for a list of commands.`;
     }

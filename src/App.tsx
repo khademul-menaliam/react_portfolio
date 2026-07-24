@@ -18,6 +18,41 @@ function App() {
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
   const [contactMethod, setContactMethod] = useState<'gui' | 'cli'>('gui');
 
+  // Sync state with URL hash (Hash Router)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith('#/project/')) {
+        const id = hash.replace('#/project/', '');
+        setSelectedProjectId(id);
+        setCurrentView('project-detail');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hash === '#/projects') {
+        setCurrentView('projects');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        setCurrentView('home');
+        if (hash && hash !== '#/' && hash !== '#home') {
+          const targetId = hash.replace('#', '');
+          // Small timeout to allow home view to render before scrolling
+          setTimeout(() => {
+            const el = document.getElementById(targetId);
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            }
+          }, 50);
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    };
+
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   // Increment visitor count slightly for realism
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,22 +62,18 @@ function App() {
   }, [visitorCount]);
 
   const navigateToView = (view: 'home' | 'projects' | 'project-detail', projectId?: string) => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (projectId) {
-      setSelectedProjectId(projectId);
+    if (view === 'project-detail' && projectId) {
+      window.location.hash = `#/project/${projectId}`;
+    } else if (view === 'projects') {
+      window.location.hash = '#/projects';
+    } else {
+      window.location.hash = '#/';
     }
-    setCurrentView(view);
   };
 
   const openTerminal = () => {
-    navigateToView('home');
+    window.location.hash = '#contact';
     setContactMethod('cli');
-    setTimeout(() => {
-      const el = document.getElementById('contact');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
   };
 
   return (

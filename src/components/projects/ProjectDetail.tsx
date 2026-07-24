@@ -58,6 +58,33 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
           </div>
         </div>
 
+        {/* Project Gallery */}
+        {project.gallery && project.gallery.length > 0 && (
+          <div className="glass-panel p-6 rounded-xl border border-outline-variant/20 shadow-md space-y-6">
+            <h2 className="font-headline-lg-mobile text-headline-lg-mobile text-secondary font-semibold flex items-center gap-2">
+              <span className="material-symbols-outlined">collections</span> Project Gallery
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.gallery.map((imgUrl, index) => (
+                <div 
+                  key={index} 
+                  onClick={() => onOpenLightbox(imgUrl)}
+                  className="rounded-lg overflow-hidden shadow-md cursor-zoom-in relative group border border-outline-variant/10 aspect-video bg-[#050508]"
+                >
+                  <img 
+                    src={imgUrl} 
+                    alt={`Project screenshot ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 opacity-85 group-hover:opacity-100"
+                  />
+                  <div className="absolute inset-0 bg-primary-fixed-dim/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="material-symbols-outlined text-white text-3xl drop-shadow">zoom_in</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
 
       {/* Right/Sidebar Column */}
@@ -91,18 +118,41 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
         {/* Actions */}
         <div className="flex flex-col gap-4">
-          <button 
-            onClick={() => alert(`Launching Live Demo for ${project.title}`)}
-            className="btn-primary font-code-sm text-code-sm px-6 py-3 rounded flex items-center justify-center gap-2 w-full uppercase tracking-wider font-semibold"
-          >
-            <span className="material-symbols-outlined">rocket_launch</span> Live Demo
-          </button>
-          <button 
-            onClick={() => alert(`Redirecting to source repository for ${project.title}`)}
-            className="btn-secondary font-code-sm text-code-sm px-6 py-3 rounded flex items-center justify-center gap-2 w-full uppercase tracking-wider font-semibold"
-          >
-            <span className="material-symbols-outlined">code</span> View Source
-          </button>
+          {project.liveLink ? (
+            <a 
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary font-code-sm text-code-sm px-6 py-3 rounded flex items-center justify-center gap-2 w-full uppercase tracking-wider font-semibold text-center hover:no-underline"
+            >
+              <span className="material-symbols-outlined">rocket_launch</span> Live Demo
+            </a>
+          ) : (
+            <button 
+              disabled
+              className="btn-primary font-code-sm text-code-sm px-6 py-3 rounded flex items-center justify-center gap-2 w-full uppercase tracking-wider font-semibold opacity-40 cursor-not-allowed text-center"
+            >
+              <span className="material-symbols-outlined">rocket_launch</span> Live Demo Offline
+            </button>
+          )}
+
+          {project.githubLink ? (
+            <a 
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary font-code-sm text-code-sm px-6 py-3 rounded flex items-center justify-center gap-2 w-full uppercase tracking-wider font-semibold text-center hover:no-underline"
+            >
+              <span className="material-symbols-outlined">code</span> View Source
+            </a>
+          ) : (
+            <button 
+              disabled
+              className="btn-secondary font-code-sm text-code-sm px-6 py-3 rounded flex items-center justify-center gap-2 w-full uppercase tracking-wider font-semibold opacity-40 cursor-not-allowed text-center"
+            >
+              <span className="material-symbols-outlined">code</span> Source Private
+            </button>
+          )}
         </div>
 
       </div>

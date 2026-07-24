@@ -4,7 +4,7 @@ import { EDUCATION_DATA } from '../../data/educationData';
 export const EducationTimeline: React.FC = () => {
   return (
     <section id="education" className="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto w-full scroll-mt-24">
-      <div className="glass-panel p-8 rounded-xl border border-outline-variant/20 shadow-lg max-w-3xl mx-auto space-y-8">
+      <div className="glass-panel p-8 rounded-xl border border-outline-variant/20 shadow-lg max-w-max-width mx-auto space-y-8">
         <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-secondary font-bold flex items-center gap-2">
           <span className="material-symbols-outlined text-[28px]">school</span> /* Education */
         </h2>

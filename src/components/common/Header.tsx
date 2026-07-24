@@ -8,14 +8,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ currentView, onNavigate, onOpenTerminal }) => {
   const triggerHomeScroll = (elementId: string) => {
-    onNavigate('home');
-    // Allow React a micro-moment to transition view if we were away from home
-    setTimeout(() => {
-      const el = document.getElementById(elementId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
+    window.location.hash = `#${elementId}`;
   };
 
   return (
