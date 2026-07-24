@@ -9,6 +9,9 @@ export interface Project {
   overview: string;
   imageSrc: string;
   visibility: 'public' | 'lock' | 'smartphone' | 'terminal' | 'api' | 'shopping_cart';
+  githubLink?: string;
+  liveLink?: string;
+  gallery?: string[];
 }
 
 export interface Education {

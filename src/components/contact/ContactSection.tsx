@@ -17,7 +17,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 }) => {
   return (
     <section id="contact" className="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto w-full scroll-mt-24">
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-max-width mx-auto space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-secondary font-bold flex items-center gap-2 text-left">
             <span className="material-symbols-outlined text-[28px]">contact_mail</span> /* Contact & Connect */
@@ -43,13 +43,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Left Column: Direct Info cards */}
           <div className="md:col-span-4 flex flex-col gap-4 text-left">
-            <div className="glass-panel p-5 rounded-xl border border-outline-variant/20 flex items-center gap-4">
+            <a 
+              href="mailto:khademulislam1080@gmail.com"
+              className="glass-panel glass-panel-hover p-5 rounded-xl border border-outline-variant/20 flex items-center gap-4 transition-all duration-300"
+            >
               <span className="material-symbols-outlined text-primary-fixed-dim text-3xl">mail</span>
               <div>
                 <h4 className="font-code-sm text-code-sm text-on-surface-variant uppercase">Email</h4>
-                <p className="text-sm font-semibold text-primary">khademul@dev.local</p>
+                <p className="text-sm font-semibold text-primary break-all">khademulislam1080@gmail.com</p>
               </div>
-            </div>
+            </a>
 
             <div className="glass-panel p-5 rounded-xl border border-outline-variant/20 flex items-center gap-4">
               <span className="material-symbols-outlined text-secondary-fixed-dim text-3xl">pin_drop</span>
@@ -64,9 +67,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <div>
                 <h4 className="font-code-sm text-code-sm text-on-surface-variant uppercase">Networks</h4>
                 <div className="flex gap-3 text-xs text-primary-fixed-dim font-code-sm pt-1">
-                  <a href="#" className="hover:underline">GitHub</a>
+                  <a 
+                    href="https://github.com/khademul-menaliam" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline hover:text-primary-fixed"
+                  >
+                    GitHub
+                  </a>
                   <span>|</span>
-                  <a href="#" className="hover:underline">LinkedIn</a>
+                  <a 
+                    href="https://www.linkedin.com/in/khademul-islam-a46915233/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="hover:underline hover:text-primary-fixed"
+                  >
+                    LinkedIn
+                  </a>
                 </div>
               </div>
             </div>

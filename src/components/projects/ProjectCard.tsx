@@ -31,7 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
       </div>
       
       {/* Project image banner */}
-      <div className="relative h-48 w-full overflow-hidden">
+      <div className="relative h-40 w-full overflow-hidden">
         <div className="absolute inset-0 bg-primary-fixed-dim/20 mix-blend-overlay group-hover:opacity-0 transition-opacity z-10 pointer-events-none"></div>
         <img 
           className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" 
@@ -41,16 +41,43 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) =>
       </div>
       
       {/* Card Content body */}
-      <div className="p-5 flex-grow flex flex-col">
+      <div className="p-5 flex-grow flex flex-col text-left">
         <div className="flex justify-between items-start mb-2">
           <h2 className="font-headline-lg text-[20px] font-semibold text-primary">{project.title}</h2>
           <span className="material-symbols-outlined text-primary-fixed-dim text-lg">
             {getVisibilityIcon(project.visibility)}
           </span>
         </div>
-        <p className="font-body-md text-body-md text-on-surface-variant text-sm mb-4 flex-grow line-clamp-3">
+        <p className="font-body-md text-body-md text-on-surface-variant text-sm mb-4 flex-grow line-clamp-2">
           {project.description}
         </p>
+
+        {/* Direct links row */}
+        {(project.liveLink || project.githubLink) && (
+          <div className="flex gap-4 mb-4 text-xs font-code-sm" onClick={(e) => e.stopPropagation()}>
+            {project.liveLink && (
+              <a 
+                href={project.liveLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-primary-fixed-dim hover:text-primary flex items-center gap-1 hover:underline"
+              >
+                <span className="material-symbols-outlined text-sm">rocket_launch</span> Live Demo
+              </a>
+            )}
+            {project.githubLink && (
+              <a 
+                href={project.githubLink} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-secondary-fixed-dim hover:text-secondary flex items-center gap-1 hover:underline"
+              >
+                <span className="material-symbols-outlined text-sm">code</span> Code
+              </a>
+            )}
+          </div>
+        )}
+
         <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
           {project.tags.map((tag) => (
             <span key={tag} className="tech-pill font-label-caps text-label-caps px-2 py-1 rounded">
